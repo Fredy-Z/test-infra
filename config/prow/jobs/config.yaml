@@ -4584,7 +4584,7 @@ periodics:
     path_alias: knative.dev/serving
   spec:
     containers:
-    - image: gcr.io/knative-tests/test-infra/coverage:latest
+    - image: gcr.io/knative-tests/test-infra/coverage-go114:latest
       imagePullPolicy: Always
       command:
       - "/coverage"
@@ -7760,7 +7760,7 @@ periodics:
     base_ref: master
   spec:
     containers:
-    - image: gcr.io/knative-tests/test-infra/prow-tests-go114:stable
+    - image: gcr.io/knative-tests/test-infra/prow-tests:stable
       imagePullPolicy: Always
       command:
       - runner.sh
@@ -7986,7 +7986,7 @@ periodics:
     base_ref: master
   spec:
     containers:
-    - image: gcr.io/knative-tests/test-infra/coverage:latest
+    - image: gcr.io/knative-tests/test-infra/coverage-go114:latest
       imagePullPolicy: Always
       command:
       - "/coverage"
@@ -9328,7 +9328,7 @@ periodics:
     path_alias: knative.dev/serving
   spec:
     containers:
-    - image: gcr.io/knative-tests/test-infra/prow-tests:stable
+    - image: gcr.io/knative-tests/test-infra/prow-tests-go114:stable
       imagePullPolicy: Always
       command:
       - runner.sh
@@ -9368,7 +9368,7 @@ periodics:
     path_alias: knative.dev/serving
   spec:
     containers:
-    - image: gcr.io/knative-tests/test-infra/prow-tests:stable
+    - image: gcr.io/knative-tests/test-infra/prow-tests-go114:stable
       imagePullPolicy: Always
       command:
       - runner.sh
@@ -9487,7 +9487,7 @@ periodics:
     base_ref: master
   spec:
     containers:
-    - image: gcr.io/knative-tests/test-infra/prow-tests:stable
+    - image: gcr.io/knative-tests/test-infra/prow-tests-go114:stable
       imagePullPolicy: Always
       command:
       - runner.sh
@@ -9526,7 +9526,7 @@ periodics:
     base_ref: master
   spec:
     containers:
-    - image: gcr.io/knative-tests/test-infra/prow-tests:stable
+    - image: gcr.io/knative-tests/test-infra/prow-tests-go114:stable
       imagePullPolicy: Always
       command:
       - runner.sh
@@ -9881,7 +9881,7 @@ postsubmits:
     path_alias: knative.dev/serving
     spec:
       containers:
-      - image: gcr.io/knative-tests/test-infra/prow-tests:stable
+      - image: gcr.io/knative-tests/test-infra/prow-tests-go114:stable
         imagePullPolicy: Always
         command:
         - runner.sh
@@ -9914,7 +9914,7 @@ postsubmits:
     path_alias: knative.dev/serving
     spec:
       containers:
-      - image: gcr.io/knative-tests/test-infra/coverage:latest
+      - image: gcr.io/knative-tests/test-infra/coverage-go114:latest
         imagePullPolicy: Always
         command:
         - "/coverage"
@@ -9930,7 +9930,7 @@ postsubmits:
     path_alias: knative.dev/serving
     spec:
       containers:
-      - image: gcr.io/knative-tests/test-infra/coverage-dev:latest
+      - image: gcr.io/knative-tests/test-infra/coverage-go114:latest
         imagePullPolicy: Always
         command:
         - "/coverage"
@@ -10107,7 +10107,7 @@ postsubmits:
       prow.k8s.io/pubsub.runID: post-google-knative-gcp-reconcile-clusters
     spec:
       containers:
-      - image: gcr.io/knative-tests/test-infra/prow-tests:stable
+      - image: gcr.io/knative-tests/test-infra/prow-tests-go114:stable
         imagePullPolicy: Always
         command:
         - runner.sh
@@ -10139,7 +10139,7 @@ postsubmits:
     cluster: "build-knative"
     spec:
       containers:
-      - image: gcr.io/knative-tests/test-infra/coverage:latest
+      - image: gcr.io/knative-tests/test-infra/coverage-go114:latest
         imagePullPolicy: Always
         command:
         - "/coverage"

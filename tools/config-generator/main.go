@@ -66,9 +66,8 @@ type repositoryData struct {
 	GoCoverageThreshold    int
 	Processed              bool
 	DotDev                 bool
-	Go113                  bool
+	Go113Branches          []string
 	Go114                  bool
-	Go112Branches          []string
 }
 
 // prowConfigTemplateData contains basic data about Prow.
@@ -346,10 +345,8 @@ func addSuffixToImageName(name string, suffix string) string {
 	return strings.Join(parts, ":")
 }
 
-func getGo112ImageName(name string) string {
-	return addSuffixToImageName(name, getGo112ID())
-}
-
+// Get go114 image name from base image name, following the contract of
+// [IMAGE]:[DIGEST]-> [IMAGE]-go114:[DIGEST]
 func getGo114ImageName(name string) string {
 	return addSuffixToImageName(stripSuffixFromImageName(name, []string{getGo112ID()}), getGo114ID())
 }
@@ -580,13 +577,6 @@ func parseBasicJobConfigOverrides(data *baseProwJobTemplateData, config yaml.Map
 					repositories[i].DotDev = true
 				}
 			}
-		case "go113":
-			needGo113 = true
-			for i, repo := range repositories {
-				if path.Base(repo.Name) == (*data).RepoName {
-					repositories[i].Go113 = true
-				}
-			}
 		case "go114":
 			needGo114 = true
 			for i, repo := range repositories {
@@ -601,10 +591,10 @@ func parseBasicJobConfigOverrides(data *baseProwJobTemplateData, config yaml.Map
 					repositories[i].EnablePerformanceTests = true
 				}
 			}
-		case "go112-branches":
+		case "go113-branches":
 			for i, repo := range repositories {
 				if path.Base(repo.Name) == (*data).RepoName {
-					repositories[i].Go112Branches = getStringArray(item.Value)
+					repositories[i].Go113Branches = getStringArray(item.Value)
 				}
 			}
 		case "env-vars":
@@ -856,23 +846,23 @@ func executeJobTemplateWrapper(repoName string, data interface{}, generateOneJob
 		}
 	}
 
-	var go112Branches []string
+	var go113Branches []string
 	// Find out if Go112Branches is set in repo settings
 	for _, repo := range repositories {
 		if repo.Name == repoName {
-			if len(repo.Go112Branches) > 0 {
-				go112Branches = repo.Go112Branches
+			if len(repo.Go113Branches) > 0 {
+				go113Branches = repo.Go113Branches
 			}
 		}
 	}
-	if len(go112Branches) > 0 {
+	if len(go113Branches) > 0 {
 		sbs = append(sbs, specialBranchLogic{
-			branches: go112Branches,
+			branches: go113Branches,
 			opsNew: func(base *baseProwJobTemplateData) {
-				base.Image = getGo113ImageName(base.Image)
+				base.Image = getGo114ImageName(base.Image)
 			},
 			restore: func(base *baseProwJobTemplateData) {
-				base.Image = getGo112ImageName(base.Image)
+				base.Image = getGo113ImageName(base.Image)
 			},
 		})
 	} else {
@@ -1127,8 +1117,8 @@ func main() {
 	flag.StringVar(&testAccount, "test-account", "/etc/test-account/service-account.json", "Path to the service account JSON for test jobs")
 	flag.StringVar(&nightlyAccount, "nightly-account", "/etc/nightly-account/service-account.json", "Path to the service account JSON for nightly release jobs")
 	flag.StringVar(&releaseAccount, "release-account", "/etc/release-account/service-account.json", "Path to the service account JSON for release jobs")
-	var coverageDockerImageName = flag.String("coverage-docker", "coverage-go112:latest", "Docker image for coverage tool")
-	var prowTestsDockerImageName = flag.String("prow-tests-docker", "prow-tests-go112:stable", "prow-tests docker image")
+	var coverageDockerImageName = flag.String("coverage-docker", "coverage:latest", "Docker image for coverage tool")
+	var prowTestsDockerImageName = flag.String("prow-tests-docker", "prow-tests:stable", "prow-tests docker image")
 	flag.StringVar(&githubCommenterDockerImage, "github-commenter-docker", "gcr.io/k8s-prow/commenter:v20190731-e3f7b9853", "github commenter docker image")
 	flag.StringVar(&presubmitScript, "presubmit-script", "./test/presubmit-tests.sh", "Executable for running presubmit tests")
 	flag.StringVar(&releaseScript, "release-script", "./hack/release.sh", "Executable for creating releases")
