@@ -596,7 +596,6 @@ func parseBasicJobConfigOverrides(data *baseProwJobTemplateData, config yaml.Map
 			continue
 		default:
 			log.Fatalf("Unknown entry %q for job", item.Key)
-			continue
 		}
 		// Knock-out the item, signalling it was already parsed.
 		config[i] = yaml.MapItem{}

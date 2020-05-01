@@ -20,6 +20,8 @@ presubmits:
   knative/serving:
     - repo-settings:
       performance: true
+      go113-branches:
+      - "release-0.11"
     - build-tests: true
       dot-dev: true
       resources:
