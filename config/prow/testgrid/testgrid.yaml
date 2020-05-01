@@ -104,9 +104,6 @@ test_groups:
 - name: ci-knative-serving-webhook-apicoverage
   gcs_prefix: knative-prow/logs/ci-knative-serving-webhook-apicoverage
   alert_stale_results_hours: 48
-- name: ci-knative-serving-continuous-go114
-  gcs_prefix: knative-prow/logs/ci-knative-serving-continuous-go114
-  alert_stale_results_hours: 3
 - name: ci-knative-serving-test-coverage
   gcs_prefix: knative-prow/logs/ci-knative-serving-go-coverage
   short_text_metric: "coverage"
@@ -738,9 +735,6 @@ dashboards:
     num_failures_to_alert: 1
   - name: webhook-apicoverage
     test_group_name: ci-knative-serving-webhook-apicoverage
-    base_options: "sort-by-name="
-  - name: continuous-go114
-    test_group_name: ci-knative-serving-continuous-go114
     base_options: "sort-by-name="
   - name: coverage
     test_group_name: ci-knative-serving-test-coverage

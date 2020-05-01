@@ -67,7 +67,7 @@ type repositoryData struct {
 	Processed              bool
 	DotDev                 bool
 	Go113Branches          []string
-	Go114                  bool
+	Go113                  bool
 }
 
 // prowConfigTemplateData contains basic data about Prow.
@@ -133,23 +133,23 @@ type stringArrayFlag []string
 
 var (
 	// Values used in the jobs that can be changed through command-line flags.
-	output                     *os.File
-	prowHost                   string
-	testGridHost               string
-	gubernatorHost             string
-	gcsBucket                  string
-	testGridGcsBucket          string
-	logsDir                    string
-	presubmitLogsDir           string
-	testAccount                string
-	nightlyAccount             string
-	releaseAccount             string
-	githubCommenterDockerImage string
-	coverageDockerImage        string
-	prowTestsDockerImage       string
-	presubmitScript            string
-	releaseScript              string
-	webhookAPICoverageScript   string
+	output                      *os.File
+	prowHost                    string
+	testGridHost                string
+	gubernatorHost              string
+	gcsBucket                   string
+	testGridGcsBucket           string
+	logsDir                     string
+	presubmitLogsDir            string
+	testAccount                 string
+	nightlyAccount              string
+	releaseAccount              string
+	githubCommenterDockerImage  string
+	coverageDockerImage         string
+	prowTestsDefaultDockerImage string
+	presubmitScript             string
+	releaseScript               string
+	webhookAPICoverageScript    string
 
 	// #########################################################################
 	// ############## data used for generating prow configuration ##############
@@ -302,20 +302,15 @@ func exclusiveSlices(a1, a2 []string) []string {
 	return res
 }
 
-// getGo112ID returns image identifier for go113 images
-func getGo112ID() string {
-	return "-go112"
-}
-
 // getGo114ID returns image identifier for go114 images
 func getGo114ID() string {
 	return "-go114"
 }
 
 // Get go113 image name from base image name, following the contract of
-// [IMAGE]:[DIGEST]-> [IMAGE]-go112:[DIGEST]
+// [IMAGE]:[DIGEST]-> [IMAGE]-go113:[DIGEST]
 func getGo113ImageName(name string) string {
-	return stripSuffixFromImageName(name, []string{getGo112ID()})
+	return stripSuffixFromImageName(name, []string{getGo114ID()})
 }
 
 // strip out all suffixes from the image name
@@ -343,12 +338,6 @@ func addSuffixToImageName(name string, suffix string) string {
 		parts[0] = fmt.Sprintf("%s%s", parts[0], suffix)
 	}
 	return strings.Join(parts, ":")
-}
-
-// Get go114 image name from base image name, following the contract of
-// [IMAGE]:[DIGEST]-> [IMAGE]-go114:[DIGEST]
-func getGo114ImageName(name string) string {
-	return addSuffixToImageName(stripSuffixFromImageName(name, []string{getGo112ID()}), getGo114ID())
 }
 
 // Consolidate whitelisted and skipped branches with newly added
@@ -431,7 +420,7 @@ func newbaseProwJobTemplateData(repo string) baseProwJobTemplateData {
 	data.GcsPresubmitLogDir = fmt.Sprintf("gs://%s/%s", gcsBucket, presubmitLogsDir)
 	data.ReleaseGcs = strings.Replace(repo, data.OrgName+"/", "knative-releases/", 1)
 	data.AlwaysRun = true
-	data.Image = prowTestsDockerImage
+	data.Image = prowTestsDefaultDockerImage
 	data.ServiceAccount = testAccount
 	data.Command = ""
 	data.Args = make([]string, 0)
@@ -549,7 +538,7 @@ func setResourcesReqForJob(res yaml.MapSlice, data *baseProwJobTemplateData) {
 // parseBasicJobConfigOverrides updates the given baseProwJobTemplateData with any base option present in the given config.
 func parseBasicJobConfigOverrides(data *baseProwJobTemplateData, config yaml.MapSlice) {
 	(*data).ExtraRefs = append((*data).ExtraRefs, "  base_ref: "+(*data).RepoBranch)
-	var needDotdev, needGo113, needGo114 bool
+	var needDotdev, needGo113 bool
 	for i, item := range config {
 		switch item.Key {
 		case "skip_branches":
@@ -577,11 +566,11 @@ func parseBasicJobConfigOverrides(data *baseProwJobTemplateData, config yaml.Map
 					repositories[i].DotDev = true
 				}
 			}
-		case "go114":
-			needGo114 = true
+		case "go113":
+			needGo113 = true
 			for i, repo := range repositories {
 				if path.Base(repo.Name) == (*data).RepoName {
-					repositories[i].Go114 = true
+					repositories[i].Go113 = true
 					data.RepoNameForJob = fmt.Sprintf("%s-%s", (*data).OrgName, (*data).RepoName)
 				}
 			}
@@ -619,9 +608,6 @@ func parseBasicJobConfigOverrides(data *baseProwJobTemplateData, config yaml.Map
 	}
 	if needGo113 {
 		(*data).Image = getGo113ImageName((*data).Image)
-	}
-	if needGo114 {
-		(*data).Image = getGo114ImageName((*data).Image)
 	}
 	// Override any values if provided by command-line flags.
 	if timeoutOverride > 0 {
@@ -847,7 +833,7 @@ func executeJobTemplateWrapper(repoName string, data interface{}, generateOneJob
 	}
 
 	var go113Branches []string
-	// Find out if Go112Branches is set in repo settings
+	// Find out if Go113Branches is set in repo settings
 	for _, repo := range repositories {
 		if repo.Name == repoName {
 			if len(repo.Go113Branches) > 0 {
@@ -859,15 +845,12 @@ func executeJobTemplateWrapper(repoName string, data interface{}, generateOneJob
 		sbs = append(sbs, specialBranchLogic{
 			branches: go113Branches,
 			opsNew: func(base *baseProwJobTemplateData) {
-				base.Image = getGo114ImageName(base.Image)
+				base.Image = prowTestsDefaultDockerImage
 			},
 			restore: func(base *baseProwJobTemplateData) {
 				base.Image = getGo113ImageName(base.Image)
 			},
 		})
-	} else {
-		base := getBase(data)
-		base.Image = getGo113ImageName(base.Image)
 	}
 
 	if len(sbs) == 0 { // Generate single job if there is no special branch logic
@@ -1118,7 +1101,7 @@ func main() {
 	flag.StringVar(&nightlyAccount, "nightly-account", "/etc/nightly-account/service-account.json", "Path to the service account JSON for nightly release jobs")
 	flag.StringVar(&releaseAccount, "release-account", "/etc/release-account/service-account.json", "Path to the service account JSON for release jobs")
 	var coverageDockerImageName = flag.String("coverage-docker", "coverage:latest", "Docker image for coverage tool")
-	var prowTestsDockerImageName = flag.String("prow-tests-docker", "prow-tests:stable", "prow-tests docker image")
+	var prowTestsDockerImageName = flag.String("prow-tests-docker", "prow-tests-go114:stable", "prow-tests default docker image")
 	flag.StringVar(&githubCommenterDockerImage, "github-commenter-docker", "gcr.io/k8s-prow/commenter:v20190731-e3f7b9853", "github commenter docker image")
 	flag.StringVar(&presubmitScript, "presubmit-script", "./test/presubmit-tests.sh", "Executable for running presubmit tests")
 	flag.StringVar(&releaseScript, "release-script", "./hack/release.sh", "Executable for creating releases")
@@ -1134,7 +1117,7 @@ func main() {
 	}
 
 	coverageDockerImage = path.Join(*dockerImagesBase, *coverageDockerImageName)
-	prowTestsDockerImage = path.Join(*dockerImagesBase, *prowTestsDockerImageName)
+	prowTestsDefaultDockerImage = path.Join(*dockerImagesBase, *prowTestsDockerImageName)
 
 	// We use MapSlice instead of maps to keep key order and create predictable output.
 	config := yaml.MapSlice{}

@@ -132,26 +132,6 @@ presubmits:
       - "./test/e2e-tests.sh --https"
       - "--run-test"
       - "./test/e2e-auto-tls-tests.sh --https"
-    - custom-test: build-tests-go114
-      dot-dev: true
-      always_run: false
-      optional: true
-      go114: true
-      resources:
-        requests:
-          memory: 12Gi # Real request for this pod is 16 as sidecar requests 4
-        limits:
-          memory: 16Gi
-      args:
-        - "--build-tests"
-    - custom-test: integration-tests-go114
-      dot-dev: true
-      always_run: false
-      optional: true
-      go114: true
-      args:
-        - "--run-test"
-        - "./test/e2e-tests.sh"
 
   knative/client:
     - build-tests: true
@@ -558,16 +538,6 @@ periodics:
           memory: 16Gi
     - webhook-apicoverage: true
       dot-dev: true
-    - custom-job: continuous-go114
-      command: "./test/e2e-tests.sh"
-      timeout: 100
-      dot-dev: true
-      go114: true
-      resources:
-        requests:
-          memory: 12Gi
-        limits:
-          memory: 16Gi
 
   knative/client:
     - continuous: true
@@ -829,7 +799,6 @@ periodics:
 
   google/knative-gcp:
     - continuous: true
-      go114: true
     - branch-ci: true
       release: "0.12"
     - branch-ci: true
