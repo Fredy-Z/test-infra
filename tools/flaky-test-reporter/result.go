@@ -28,10 +28,10 @@ import (
 	"sort"
 	"strings"
 
+	"github.com/chizhg/test-infra/tools/flaky-test-reporter/config"
 	"knative.dev/pkg/test/helpers"
 	"knative.dev/pkg/test/junit"
 	"knative.dev/pkg/test/prow"
-	"knative.dev/test-infra/tools/flaky-test-reporter/config"
 )
 
 const (

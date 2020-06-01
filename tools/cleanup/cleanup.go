@@ -31,7 +31,7 @@ import (
 	"sync/atomic"
 	"time"
 
-	"knative.dev/test-infra/tools/cleanup/options"
+	"github.com/chizhg/test-infra/tools/cleanup/options"
 
 	"github.com/google/go-containerregistry/pkg/authn"
 	"github.com/google/go-containerregistry/pkg/name"

@@ -24,7 +24,7 @@ import (
 	"github.com/google/go-github/v27/github"
 	"knative.dev/pkg/test/ghutil"
 
-	"knative.dev/test-infra/tools/prow-config-updater/config"
+	"github.com/chizhg/test-infra/tools/prow-config-updater/config"
 )
 
 const (

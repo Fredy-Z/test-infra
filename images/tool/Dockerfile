@@ -21,16 +21,16 @@ ARG TOOL_NAME
 ARG TOOLS_SUBDIR
 
 # Temporarily add test-infra to the image to build custom tools
-COPY . /go/src/knative.dev/test-infra
+COPY . /go/src/github.com/chizhg/test-infra
 
 # TODO: jobs should not run `/command`, just `command`
 
-RUN go install "/go/src/knative.dev/test-infra/tools/${TOOLS_SUBDIR}${TOOL_NAME}"
+RUN go install "/go/src/github.com/chizhg/test-infra/tools/${TOOLS_SUBDIR}${TOOL_NAME}"
 RUN cp "$(which ${TOOL_NAME})" /
 
-RUN if [ "${TOOL_NAME}" = flaky-test-reporter ]; then mkdir -p /config && cp /go/src/knative.dev/test-infra/tools/flaky-test-reporter/config/config.yaml /config/config.yaml; fi
+RUN if [ "${TOOL_NAME}" = flaky-test-reporter ]; then mkdir -p /config && cp /go/src/github.com/chizhg/test-infra/tools/flaky-test-reporter/config/config.yaml /config/config.yaml; fi
 
 # Remove test-infra from the container
-RUN rm -fr /go/src/knative.dev/test-infra
+RUN rm -fr /go/src/github.com/chizhg/test-infra
 
 ENTRYPOINT ["/${TOOL_NAME}"]

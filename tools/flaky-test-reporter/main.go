@@ -27,10 +27,10 @@ import (
 	"os"
 	"time"
 
+	"github.com/chizhg/test-infra/tools/flaky-test-reporter/config"
 	"knative.dev/pkg/test/helpers"
 	"knative.dev/pkg/test/prow"
 	"knative.dev/pkg/test/slackutil"
-	"knative.dev/test-infra/tools/flaky-test-reporter/config"
 )
 
 var (

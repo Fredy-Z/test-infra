@@ -19,12 +19,12 @@ package main
 import (
 	"log"
 
-	"knative.dev/test-infra/tools/coverage/artifacts"
-	"knative.dev/test-infra/tools/coverage/calc"
-	"knative.dev/test-infra/tools/coverage/gcs"
-	"knative.dev/test-infra/tools/coverage/githubUtil"
-	"knative.dev/test-infra/tools/coverage/io"
-	"knative.dev/test-infra/tools/coverage/line"
+	"github.com/chizhg/test-infra/tools/coverage/artifacts"
+	"github.com/chizhg/test-infra/tools/coverage/calc"
+	"github.com/chizhg/test-infra/tools/coverage/gcs"
+	"github.com/chizhg/test-infra/tools/coverage/githubUtil"
+	"github.com/chizhg/test-infra/tools/coverage/io"
+	"github.com/chizhg/test-infra/tools/coverage/line"
 )
 
 // RunPresubmit runs the pre-submit procedure

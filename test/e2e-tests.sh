@@ -42,7 +42,7 @@ function run_prow_cluster_tool() {
     # TODO(chizhg): support parameterizing "gke" so that we can create other types of clusters
     go run "${REPO_ROOT_DIR}"/kntest/cmd/kntest cluster gke $@
   else
-    run_go_tool knative.dev/test-infra/kntest/cmd/kntest cluster gke $@
+    run_go_tool github.com/chizhg/test-infra/kntest/cmd/kntest cluster gke $@
   fi
 }
 

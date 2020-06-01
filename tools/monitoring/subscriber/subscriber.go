@@ -22,7 +22,7 @@ import (
 	"log"
 
 	"cloud.google.com/go/pubsub"
-	"knative.dev/test-infra/tools/monitoring/prowapi"
+	"github.com/chizhg/test-infra/tools/monitoring/prowapi"
 )
 
 const projectID = "knative-tests"

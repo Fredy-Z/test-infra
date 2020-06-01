@@ -21,10 +21,10 @@ import (
 	"log"
 	"testing"
 
-	"knative.dev/test-infra/tools/coverage/artifacts/artsTest"
-	"knative.dev/test-infra/tools/coverage/gcs/gcsFakes"
-	"knative.dev/test-infra/tools/coverage/logUtil"
-	"knative.dev/test-infra/tools/coverage/test"
+	"github.com/chizhg/test-infra/tools/coverage/artifacts/artsTest"
+	"github.com/chizhg/test-infra/tools/coverage/gcs/gcsFakes"
+	"github.com/chizhg/test-infra/tools/coverage/logUtil"
+	"github.com/chizhg/test-infra/tools/coverage/test"
 )
 
 func testPostSubmit() (p *PostSubmit) {

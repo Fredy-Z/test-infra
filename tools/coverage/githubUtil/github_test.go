@@ -37,9 +37,9 @@ func TestFilePathProfileToGithub(t *testing.T) {
 				"/d1/d2/d3/gopath/src/github.com/myRepoOwner/myRepoName"},
 			"pkg/ab/cde"},
 		{"repo on knative.dev",
-			args{"knative.dev/test-infra/pkg/ab/cde",
+			args{"github.com/chizhg/test-infra/pkg/ab/cde",
 				"/d1/d2/gopath",
-				"/d1/d2/gopath/src/knative.dev/test-infra"},
+				"/d1/d2/gopath/src/github.com/chizhg/test-infra"},
 			"pkg/ab/cde"},
 	}
 	for _, tt := range tests {

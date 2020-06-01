@@ -22,8 +22,8 @@ import (
 	"path"
 	"strings"
 
+	"github.com/chizhg/test-infra/tools/coverage/str"
 	"k8s.io/apimachinery/pkg/util/sets"
-	"knative.dev/test-infra/tools/coverage/str"
 )
 
 // CoverageList is a collection and summary over multiple file Coverage objects

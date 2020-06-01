@@ -24,9 +24,9 @@ import (
 	"sync"
 	"time"
 
+	"github.com/chizhg/test-infra/pkg/testgrid"
 	"knative.dev/pkg/test/helpers"
 	"knative.dev/pkg/test/slackutil"
-	"knative.dev/test-infra/pkg/testgrid"
 )
 
 const (

@@ -19,7 +19,7 @@ package artsTest
 import (
 	"testing"
 
-	"knative.dev/test-infra/tools/coverage/test"
+	"github.com/chizhg/test-infra/tools/coverage/test"
 )
 
 func TestLocalInputArts(t *testing.T) {

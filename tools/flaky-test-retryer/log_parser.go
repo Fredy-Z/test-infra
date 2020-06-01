@@ -25,13 +25,13 @@ import (
 	"path/filepath"
 	"strings"
 
+	"github.com/chizhg/test-infra/tools/flaky-test-reporter/jsonreport"
 	"knative.dev/pkg/test/junit"
 	"knative.dev/pkg/test/prow"
-	"knative.dev/test-infra/tools/flaky-test-reporter/jsonreport"
 
 	// TODO: remove this import once "k8s.io/test-infra" import problems are fixed
 	// https://github.com/knative/test-infra/test-infra/issues/912
-	"knative.dev/test-infra/tools/monitoring/prowapi"
+	"github.com/chizhg/test-infra/tools/monitoring/prowapi"
 )
 
 var client jsonreport.Client

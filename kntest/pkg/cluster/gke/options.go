@@ -19,7 +19,7 @@ package gke
 import (
 	"github.com/spf13/cobra"
 
-	"knative.dev/test-infra/kntest/pkg/cluster/gke/ops"
+	"github.com/chizhg/test-infra/kntest/pkg/cluster/gke/ops"
 )
 
 func addCommonOptions(clusterCmd *cobra.Command, rw *ops.RequestWrapper) {

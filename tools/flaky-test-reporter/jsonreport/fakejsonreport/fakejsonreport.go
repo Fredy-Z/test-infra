@@ -20,7 +20,7 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"knative.dev/test-infra/tools/flaky-test-reporter/jsonreport"
+	"github.com/chizhg/test-infra/tools/flaky-test-reporter/jsonreport"
 )
 
 // FakeClient fakes the jsonreport client. All file IO is redirected to data array

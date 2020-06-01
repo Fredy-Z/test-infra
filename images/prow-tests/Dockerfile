@@ -91,33 +91,33 @@ COPY scripts /scripts
 COPY images/prow-tests/in-gvm-env.sh /usr/local/bin
 
 # Temporarily add test-infra to the image to build custom tools
-COPY . /go/src/knative.dev/test-infra
+COPY . /go/src/github.com/chizhg/test-infra
 
 # Build custom tools in the container
 # TODO: githubhelper is obsolete and no longer used in current test-infra (only old release branch scripts)
 #       it should be deleted from the repo when those releases are no longer supported
-RUN go install /go/src/knative.dev/test-infra/tools/githubhelper
+RUN go install /go/src/github.com/chizhg/test-infra/tools/githubhelper
 # Because githubhelper was previously installed in a stupid way, it was used as `/workspace/githubhelper` so copy it
 RUN cp "$(which githubhelper)" .
 
 # If you needed to compile and install different tools for different version of Go,
 #  you could do it like:
-#  RUN GO_VERSION=go1.13 in-gvm-env.sh go install knative.dev/test-infra/tools/coverage
-#  RUN GO_VERSION=go1.14 in-gvm-env.sh go install knative.dev/test-infra/tools/coverage
+#  RUN GO_VERSION=go1.13 in-gvm-env.sh go install github.com/chizhg/test-infra/tools/coverage
+#  RUN GO_VERSION=go1.14 in-gvm-env.sh go install github.com/chizhg/test-infra/tools/coverage
 
 # Install coverage tool:
-RUN go install knative.dev/test-infra/tools/coverage
+RUN go install github.com/chizhg/test-infra/tools/coverage
 # This runs "runner.sh coverage" so coverage can be used with any installed Go
 # TODO: Prow jobs run `runner.sh coverage` instead `/coverage`
 COPY images/prow-tests/coverage.sh /coverage
 
-# RUN go install knative.dev/test-infra/kntest/cmd/kntest # Uncomment when you wish to have kntest installed
+# RUN go install github.com/chizhg/test-infra/kntest/cmd/kntest # Uncomment when you wish to have kntest installed
 
 # reset --hard doesn't care about dirty working copy
 # This must be the last install
-RUN cd /go/src/knative.dev/test-infra && git reset --hard upstream/release-0.14 && go install knative.dev/test-infra/tools/dep-collector
+RUN cd /go/src/github.com/chizhg/test-infra && git reset --hard upstream/release-0.14 && go install github.com/chizhg/test-infra/tools/dep-collector
 
 # Cleanup
-RUN rm -fr /go/src/knative.dev/test-infra
+RUN rm -fr /go/src/github.com/chizhg/test-infra
 RUN rm -f /usr/local/bin/source-gvm-and-run.sh
 RUN rm -f /usr/local/bin/in-gvm-env.sh

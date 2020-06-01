@@ -21,10 +21,10 @@ import (
 	"path"
 	"strings"
 
+	"github.com/chizhg/test-infra/tools/coverage/git"
+	"github.com/chizhg/test-infra/tools/coverage/githubUtil/githubPr"
+	"github.com/chizhg/test-infra/tools/coverage/logUtil"
 	"github.com/google/go-github/v27/github"
-	"knative.dev/test-infra/tools/coverage/git"
-	"knative.dev/test-infra/tools/coverage/githubUtil/githubPr"
-	"knative.dev/test-infra/tools/coverage/logUtil"
 )
 
 // return corresponding source file path of given path (abc_test.go -> abc.go)

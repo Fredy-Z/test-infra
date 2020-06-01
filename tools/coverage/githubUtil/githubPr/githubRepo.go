@@ -22,9 +22,9 @@ import (
 	"log"
 	"strconv"
 
+	"github.com/chizhg/test-infra/tools/coverage/githubUtil/githubClient"
+	"github.com/chizhg/test-infra/tools/coverage/logUtil"
 	"github.com/google/go-github/v27/github"
-	"knative.dev/test-infra/tools/coverage/githubUtil/githubClient"
-	"knative.dev/test-infra/tools/coverage/logUtil"
 )
 
 type GithubPr struct {

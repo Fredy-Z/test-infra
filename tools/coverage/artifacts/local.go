@@ -22,7 +22,7 @@ import (
 	"path"
 	"strings"
 
-	"knative.dev/test-infra/tools/coverage/logUtil"
+	"github.com/chizhg/test-infra/tools/coverage/logUtil"
 )
 
 type LocalArtifacts struct {

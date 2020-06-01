@@ -24,9 +24,9 @@ import (
 	"strconv"
 	"strings"
 
-	"knative.dev/test-infra/tools/coverage/git"
-	"knative.dev/test-infra/tools/coverage/githubUtil"
-	"knative.dev/test-infra/tools/coverage/str"
+	"github.com/chizhg/test-infra/tools/coverage/git"
+	"github.com/chizhg/test-infra/tools/coverage/githubUtil"
+	"github.com/chizhg/test-infra/tools/coverage/str"
 )
 
 type codeBlock struct {

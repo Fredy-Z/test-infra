@@ -1,4 +1,4 @@
-module knative.dev/test-infra
+module github.com/chizhg/test-infra
 
 go 1.14
 

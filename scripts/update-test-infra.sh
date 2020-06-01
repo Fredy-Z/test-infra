@@ -75,7 +75,7 @@ function run() {
     git fetch test-infra "${SCRIPTS_REF}"
     do_read_tree
     echo "Attempting to point all scripts to use this new path"
-    grep -RiIl vendor/knative.dev/test-infra | grep -v ^vendor | grep -v ^scripts/test-infra | xargs sed -i 's+vendor/knative.dev/test-infra/scripts+scripts/test-infra+'
+    grep -RiIl vendor/github.com/chizhg/test-infra | grep -v ^vendor | grep -v ^scripts/test-infra | xargs sed -i 's+vendor/github.com/chizhg/test-infra/scripts+scripts/test-infra+'
   elif (( DO_UPDATE )); then
     pushd "$(dirname "${BASH_SOURCE[0]}")/../.."
     trap popd EXIT

@@ -21,8 +21,8 @@ import (
 
 	"k8s.io/apimachinery/pkg/util/sets"
 
-	"knative.dev/test-infra/tools/coverage/githubUtil/githubFakes"
-	"knative.dev/test-infra/tools/coverage/test"
+	"github.com/chizhg/test-infra/tools/coverage/githubUtil/githubFakes"
+	"github.com/chizhg/test-infra/tools/coverage/test"
 )
 
 func TestGetConcernedFiles(t *testing.T) {

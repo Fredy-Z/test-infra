@@ -25,7 +25,7 @@ import (
 	"knative.dev/pkg/test/ghutil"
 	"knative.dev/pkg/test/prow"
 
-	"knative.dev/test-infra/tools/prow-config-updater/config"
+	"github.com/chizhg/test-infra/tools/prow-config-updater/config"
 )
 
 func main() {

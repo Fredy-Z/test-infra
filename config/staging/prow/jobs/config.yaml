@@ -144,7 +144,7 @@ presubmits:
     rerun_command: "/test pull-knative-prow-robot-test-infra-build-tests"
     trigger: "(?m)^/test (all|pull-knative-prow-robot-test-infra-build-tests),?(\\s+|$)"
     decorate: true
-    path_alias: knative.dev/test-infra
+    path_alias: github.com/chizhg/test-infra
     cluster: "build-knative"
     spec:
       containers:
@@ -183,7 +183,7 @@ presubmits:
     rerun_command: "/test pull-knative-prow-robot-test-infra-unit-tests"
     trigger: "(?m)^/test (all|pull-knative-prow-robot-test-infra-unit-tests),?(\\s+|$)"
     decorate: true
-    path_alias: knative.dev/test-infra
+    path_alias: github.com/chizhg/test-infra
     cluster: "build-knative"
     spec:
       containers:
@@ -222,7 +222,7 @@ presubmits:
     rerun_command: "/test pull-knative-prow-robot-test-infra-integration-tests"
     trigger: "(?m)^/test (all|pull-knative-prow-robot-test-infra-integration-tests),?(\\s+|$)"
     decorate: true
-    path_alias: knative.dev/test-infra
+    path_alias: github.com/chizhg/test-infra
     cluster: "build-knative"
     spec:
       containers:

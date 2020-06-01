@@ -20,10 +20,10 @@ import (
 	"log"
 	"path"
 
+	"github.com/chizhg/test-infra/tools/coverage/githubUtil/githubClient"
+	"github.com/chizhg/test-infra/tools/coverage/githubUtil/githubPr"
+	"github.com/chizhg/test-infra/tools/coverage/test"
 	"github.com/google/go-github/v27/github"
-	"knative.dev/test-infra/tools/coverage/githubUtil/githubClient"
-	"knative.dev/test-infra/tools/coverage/githubUtil/githubPr"
-	"knative.dev/test-infra/tools/coverage/test"
 )
 
 func FakeGithubClient() *githubClient.GithubClient {

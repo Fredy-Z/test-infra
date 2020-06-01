@@ -20,13 +20,13 @@ import (
 	"context"
 	"log"
 
+	"github.com/chizhg/test-infra/tools/monitoring/config"
+	"github.com/chizhg/test-infra/tools/monitoring/log_parser"
+	"github.com/chizhg/test-infra/tools/monitoring/mail"
+	"github.com/chizhg/test-infra/tools/monitoring/mysql"
+	"github.com/chizhg/test-infra/tools/monitoring/prowapi"
+	"github.com/chizhg/test-infra/tools/monitoring/subscriber"
 	"knative.dev/pkg/test/gcs"
-	"knative.dev/test-infra/tools/monitoring/config"
-	"knative.dev/test-infra/tools/monitoring/log_parser"
-	"knative.dev/test-infra/tools/monitoring/mail"
-	"knative.dev/test-infra/tools/monitoring/mysql"
-	"knative.dev/test-infra/tools/monitoring/prowapi"
-	"knative.dev/test-infra/tools/monitoring/subscriber"
 )
 
 const subName = "test-infra-monitoring-sub"

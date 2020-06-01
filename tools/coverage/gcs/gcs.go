@@ -24,9 +24,9 @@ import (
 	"path"
 
 	"cloud.google.com/go/storage"
+	"github.com/chizhg/test-infra/tools/coverage/artifacts"
+	"github.com/chizhg/test-infra/tools/coverage/logUtil"
 	"google.golang.org/api/iterator"
-	"knative.dev/test-infra/tools/coverage/artifacts"
-	"knative.dev/test-infra/tools/coverage/logUtil"
 )
 
 type StorageClient interface {

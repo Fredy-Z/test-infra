@@ -20,13 +20,13 @@ import (
 	"fmt"
 	"testing"
 
-	"knative.dev/test-infra/tools/coverage/artifacts/artsTest"
-	"knative.dev/test-infra/tools/coverage/gcs"
-	"knative.dev/test-infra/tools/coverage/gcs/gcsFakes"
-	"knative.dev/test-infra/tools/coverage/githubUtil/githubClient"
-	"knative.dev/test-infra/tools/coverage/githubUtil/githubFakes"
-	"knative.dev/test-infra/tools/coverage/githubUtil/githubPr"
-	"knative.dev/test-infra/tools/coverage/test"
+	"github.com/chizhg/test-infra/tools/coverage/artifacts/artsTest"
+	"github.com/chizhg/test-infra/tools/coverage/gcs"
+	"github.com/chizhg/test-infra/tools/coverage/gcs/gcsFakes"
+	"github.com/chizhg/test-infra/tools/coverage/githubUtil/githubClient"
+	"github.com/chizhg/test-infra/tools/coverage/githubUtil/githubFakes"
+	"github.com/chizhg/test-infra/tools/coverage/githubUtil/githubPr"
+	"github.com/chizhg/test-infra/tools/coverage/test"
 )
 
 const (

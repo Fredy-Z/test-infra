@@ -21,9 +21,9 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"knative.dev/test-infra/kntest/pkg/cluster"
-	"knative.dev/test-infra/kntest/pkg/junit"
-	"knative.dev/test-infra/kntest/pkg/metadata"
+	"github.com/chizhg/test-infra/kntest/pkg/cluster"
+	"github.com/chizhg/test-infra/kntest/pkg/junit"
+	"github.com/chizhg/test-infra/kntest/pkg/metadata"
 )
 
 func main() {

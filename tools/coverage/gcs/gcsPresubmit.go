@@ -25,8 +25,8 @@ import (
 	"path"
 	"strconv"
 
-	"knative.dev/test-infra/tools/coverage/artifacts"
-	"knative.dev/test-infra/tools/coverage/githubUtil/githubPr"
+	"github.com/chizhg/test-infra/tools/coverage/artifacts"
+	"github.com/chizhg/test-infra/tools/coverage/githubUtil/githubPr"
 )
 
 const (

@@ -19,7 +19,7 @@ package cluster
 import (
 	"github.com/spf13/cobra"
 
-	"knative.dev/test-infra/kntest/pkg/cluster/gke"
+	"github.com/chizhg/test-infra/kntest/pkg/cluster/gke"
 )
 
 func AddCommands(topLevel *cobra.Command) {

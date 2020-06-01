@@ -22,7 +22,7 @@ import (
 	"github.com/spf13/cobra"
 	clm "knative.dev/pkg/testutils/clustermanager/e2e-tests"
 
-	"knative.dev/test-infra/kntest/pkg/cluster/gke/ops"
+	"github.com/chizhg/test-infra/kntest/pkg/cluster/gke/ops"
 )
 
 // AddCommands adds gke subcommands.

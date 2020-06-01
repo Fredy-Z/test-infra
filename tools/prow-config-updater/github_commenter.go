@@ -23,7 +23,7 @@ import (
 	"knative.dev/pkg/test/ghutil"
 	"knative.dev/pkg/test/helpers"
 
-	"knative.dev/test-infra/tools/prow-config-updater/config"
+	"github.com/chizhg/test-infra/tools/prow-config-updater/config"
 )
 
 const (

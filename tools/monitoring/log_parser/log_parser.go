@@ -20,8 +20,8 @@ import (
 	"log"
 	"regexp"
 
-	"knative.dev/test-infra/tools/monitoring/config"
-	"knative.dev/test-infra/tools/monitoring/mysql"
+	"github.com/chizhg/test-infra/tools/monitoring/config"
+	"github.com/chizhg/test-infra/tools/monitoring/mysql"
 )
 
 // collectMatches collects error messages that matches the patterns from text.

@@ -21,9 +21,9 @@ import (
 	"reflect"
 	"testing"
 
+	"github.com/chizhg/test-infra/tools/monitoring/prowapi"
 	"github.com/google/go-github/v27/github"
 	"knative.dev/pkg/test/ghutil/fakeghutil"
-	"knative.dev/test-infra/tools/monitoring/prowapi"
 )
 
 var (

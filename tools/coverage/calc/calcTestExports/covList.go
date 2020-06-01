@@ -17,8 +17,8 @@ limitations under the License.
 package calcTestExports
 
 import (
-	"knative.dev/test-infra/tools/coverage/artifacts/artsTest"
-	"knative.dev/test-infra/tools/coverage/calc"
+	"github.com/chizhg/test-infra/tools/coverage/artifacts/artsTest"
+	"github.com/chizhg/test-infra/tools/coverage/calc"
 )
 
 func CovList() *calc.CoverageList {

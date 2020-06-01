@@ -21,9 +21,9 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/chizhg/test-infra/tools/flaky-test-reporter/config"
 	"github.com/google/go-github/v27/github"
 	"knative.dev/pkg/test/ghutil/fakeghutil"
-	"knative.dev/test-infra/tools/flaky-test-reporter/config"
 )
 
 var testStatsMapForTest = map[string]TestStat{

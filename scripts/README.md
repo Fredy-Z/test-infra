@@ -85,7 +85,7 @@ skipped.
 ### Sample presubmit test script
 
 ```bash
-source vendor/knative.dev/test-infra/scripts/presubmit-tests.sh
+source vendor/github.com/chizhg/test-infra/scripts/presubmit-tests.sh
 
 function post_build_tests() {
   echo "Cleaning up after build tests"
@@ -199,7 +199,7 @@ test cluster is created in a specific region, `us-west2`.
 # This test requires a cluster in LA
 E2E_CLUSTER_REGION=us-west2
 
-source vendor/knative.dev/test-infra/scripts/e2e-tests.sh
+source vendor/github.com/chizhg/test-infra/scripts/e2e-tests.sh
 
 function knative_setup() {
   start_latest_knative_serving
@@ -269,7 +269,7 @@ benchmarking jobs for each repo. To use it:
 This script will update `Knative serving` and the given benchmark.
 
 ```bash
-source vendor/knative.dev/test-infra/scripts/performance-tests.sh
+source vendor/github.com/chizhg/test-infra/scripts/performance-tests.sh
 
 function update_knative() {
   echo ">> Updating serving"
@@ -344,7 +344,7 @@ This is a helper script for Knative release scripts. To use it:
 ### Sample release script
 
 ```bash
-source vendor/knative.dev/test-infra/scripts/release.sh
+source vendor/github.com/chizhg/test-infra/scripts/release.sh
 
 function build_release() {
   # config/ contains the manifests

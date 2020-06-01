@@ -23,8 +23,8 @@ import (
 	"sort"
 	"strings"
 
-	"knative.dev/test-infra/tools/coverage/githubUtil"
-	"knative.dev/test-infra/tools/coverage/str"
+	"github.com/chizhg/test-infra/tools/coverage/githubUtil"
+	"github.com/chizhg/test-infra/tools/coverage/str"
 )
 
 type Incremental struct {

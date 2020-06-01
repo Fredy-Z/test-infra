@@ -3038,7 +3038,7 @@ presubmits:
     rerun_command: "/test pull-knative-test-infra-build-tests"
     trigger: "(?m)^/test (all|pull-knative-test-infra-build-tests),?(\\s+|$)"
     decorate: true
-    path_alias: knative.dev/test-infra
+    path_alias: github.com/chizhg/test-infra
     cluster: "build-knative"
     branches:
     - "release-0.11"
@@ -3080,7 +3080,7 @@ presubmits:
     rerun_command: "/test pull-knative-test-infra-build-tests"
     trigger: "(?m)^/test (all|pull-knative-test-infra-build-tests),?(\\s+|$)"
     decorate: true
-    path_alias: knative.dev/test-infra
+    path_alias: github.com/chizhg/test-infra
     cluster: "build-knative"
     skip_branches:
     - "release-0.11"
@@ -3124,7 +3124,7 @@ presubmits:
     rerun_command: "/test pull-knative-test-infra-unit-tests"
     trigger: "(?m)^/test (all|pull-knative-test-infra-unit-tests),?(\\s+|$)"
     decorate: true
-    path_alias: knative.dev/test-infra
+    path_alias: github.com/chizhg/test-infra
     cluster: "build-knative"
     branches:
     - "release-0.11"
@@ -3166,7 +3166,7 @@ presubmits:
     rerun_command: "/test pull-knative-test-infra-unit-tests"
     trigger: "(?m)^/test (all|pull-knative-test-infra-unit-tests),?(\\s+|$)"
     decorate: true
-    path_alias: knative.dev/test-infra
+    path_alias: github.com/chizhg/test-infra
     cluster: "build-knative"
     skip_branches:
     - "release-0.11"
@@ -3210,7 +3210,7 @@ presubmits:
     rerun_command: "/test pull-knative-test-infra-integration-tests"
     trigger: "(?m)^/test (all|pull-knative-test-infra-integration-tests),?(\\s+|$)"
     decorate: true
-    path_alias: knative.dev/test-infra
+    path_alias: github.com/chizhg/test-infra
     cluster: "build-knative"
     branches:
     - "release-0.11"
@@ -3252,7 +3252,7 @@ presubmits:
     rerun_command: "/test pull-knative-test-infra-integration-tests"
     trigger: "(?m)^/test (all|pull-knative-test-infra-integration-tests),?(\\s+|$)"
     decorate: true
-    path_alias: knative.dev/test-infra
+    path_alias: github.com/chizhg/test-infra
     cluster: "build-knative"
     skip_branches:
     - "release-0.11"
@@ -3297,7 +3297,7 @@ presubmits:
     trigger: "(?m)^/test (all|pull-knative-test-infra-go-coverage),?(\\s+|$)"
     optional: true
     decorate: true
-    path_alias: knative.dev/test-infra
+    path_alias: github.com/chizhg/test-infra
     cluster: "build-knative"
     branches:
     - "release-0.11"
@@ -3332,7 +3332,7 @@ presubmits:
     trigger: "(?m)^/test (all|pull-knative-test-infra-go-coverage),?(\\s+|$)"
     optional: true
     decorate: true
-    path_alias: knative.dev/test-infra
+    path_alias: github.com/chizhg/test-infra
     cluster: "build-knative"
     skip_branches:
     - "release-0.11"
@@ -11384,7 +11384,7 @@ periodics:
   - org: knative
     repo: test-infra
     base_ref: master
-    path_alias: knative.dev/test-infra
+    path_alias: github.com/chizhg/test-infra
   spec:
     containers:
     - image: gcr.io/knative-tests/test-infra/prow-tests:stable
@@ -11422,7 +11422,7 @@ periodics:
   - org: knative
     repo: test-infra
     base_ref: master
-    path_alias: knative.dev/test-infra
+    path_alias: github.com/chizhg/test-infra
   spec:
     containers:
     - image: gcr.io/knative-tests/test-infra/prow-tests:beta
@@ -11460,7 +11460,7 @@ periodics:
   - org: knative
     repo: test-infra
     base_ref: master
-    path_alias: knative.dev/test-infra
+    path_alias: github.com/chizhg/test-infra
   spec:
     containers:
     - image: gcr.io/knative-tests/test-infra/prow-tests:stable
@@ -11487,7 +11487,7 @@ periodics:
   - org: knative
     repo: test-infra
     base_ref: master
-    path_alias: knative.dev/test-infra
+    path_alias: github.com/chizhg/test-infra
   spec:
     containers:
     - image: gcr.io/knative-tests/test-infra/prow-tests:beta
@@ -16388,7 +16388,7 @@ postsubmits:
     agent: kubernetes
     decorate: true
     cluster: "build-knative"
-    path_alias: knative.dev/test-infra
+    path_alias: github.com/chizhg/test-infra
     spec:
       containers:
       - image: gcr.io/knative-tests/test-infra/prow-tests:stable

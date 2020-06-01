@@ -27,7 +27,7 @@ import (
 
 	"knative.dev/pkg/test/ghutil"
 
-	"knative.dev/test-infra/pkg/git"
+	"github.com/chizhg/test-infra/pkg/git"
 )
 
 // Tags could be in the form of: v[YYYYMMDD]-[GIT_HASH](-[VARIANT_PART]),

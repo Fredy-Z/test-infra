@@ -17,8 +17,8 @@ limitations under the License.
 package artsTest
 
 import (
-	"knative.dev/test-infra/tools/coverage/artifacts"
-	"knative.dev/test-infra/tools/coverage/test"
+	"github.com/chizhg/test-infra/tools/coverage/artifacts"
+	"github.com/chizhg/test-infra/tools/coverage/test"
 )
 
 type LocalArtifacts = artifacts.LocalArtifacts
