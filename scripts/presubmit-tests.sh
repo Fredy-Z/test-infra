@@ -49,6 +49,7 @@ function pr_only_contains() {
 # Initialize flags and context for presubmit tests:
 # CHANGED_FILES, IS_PRESUBMIT_EXEMPT_PR and IS_DOCUMENTATION_PR.
 function initialize_environment() {
+  echo "test"
   CHANGED_FILES=""
   IS_PRESUBMIT_EXEMPT_PR=0
   IS_DOCUMENTATION_PR=0
