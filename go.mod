@@ -6,7 +6,7 @@ require (
 	cloud.google.com/go/pubsub v1.2.0
 	cloud.google.com/go/storage v1.6.0
 	github.com/go-sql-driver/mysql v1.5.0
-	github.com/google/go-cmp v0.4.0
+	github.com/google/go-cmp v0.4.1
 	github.com/google/go-containerregistry v0.0.0-20200123184029-53ce695e4179
 	github.com/google/go-github/v27 v27.0.6
 	github.com/google/licenseclassifier v0.0.0-20200402202327-879cb1424de0
