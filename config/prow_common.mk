@@ -99,7 +99,7 @@ update-all-build-cluster-deployments:: confirm-master
 	$(UNSET_CONTEXT)
 
 # Update all resources on Prow cluster
-update-prow-cluster: update-all-cluster-deployments update-all-build-cluster-deployments update-boskos-resource update-prow-config
+update-prow-cluster:: update-all-cluster-deployments update-all-build-cluster-deployments update-boskos-resource update-prow-config
 
 # Update everything
 update-all: update-all-cluster-deployments update-all-build-cluster-deployments update-boskos-resource update-prow-config update-testgrid-config

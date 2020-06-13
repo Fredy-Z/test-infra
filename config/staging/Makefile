@@ -29,7 +29,7 @@ update-all-boskos-deployments::
 	kubectl patch deployment boskos-janitor -n test-pods -p '{"spec":{"replicas":3}}'
 	$(UNSET_CONTEXT)
 
-update-almost-all-cluster-deployments::
+update-prow-cluster::
 	$(SET_CONTEXT)
 	$(eval host := $(subst https://,,$(PROW_HOST)))
 	kubectl get ingress -oyaml | sed "s/prow.knative.dev/$(host)/" | kubectl apply -f -
